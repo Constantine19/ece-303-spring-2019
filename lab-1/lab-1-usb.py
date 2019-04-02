@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 awg_address = 'USB0::0x0957::0x0407::MY44043483::0::INSTR'  # Waveform Generator Address
 dmm_address = 'USB0::0x2A8D::0xB318::MY58160107::0::INSTR'  # Digital Multimeter Address
 
-Vmin = 0  # LowerDMMDCOutputVoltage(Volts)
-Vmax = 10  # UpperDMMDCOutputVoltage(Volts)
-N_Volts = 51  # Number of voltages between V min and V max
+Vmin = 0        # LowerDMMDCOutputVoltage(Volts)
+Vmax = 10       # UpperDMMDCOutputVoltage(Volts)
+N_Volts = 51    # Number of voltages between V min and V max
 
 # Define voltage and current vectors
 V = np.linspace(Vmin, Vmax, N_Volts)
@@ -21,7 +21,7 @@ rm = visa.ResourceManager()
 awg = rm.open_resource(awg_address)
 dmm = rm.open_resource(dmm_address)
 
-# Place waveform generator in High−Z awg.write(”OUTP:LOAD INF”)
+# Place waveform generator in High−Z
 awg.write("OUTP:LOAD INF")
 
 # Conduct Measurements

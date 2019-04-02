@@ -12,7 +12,6 @@ import matplotlib.pyplot as plt
 def linear_regression(x, y, force_origin=False):
     """
     Performs linear regression given the x-data and y-data
-    There should be an option to force the fitted equation through the origin.
 
     :param x, y: x-data in one list and y-data in another list
     :param force_origin: if True, force fits the equation through the origin

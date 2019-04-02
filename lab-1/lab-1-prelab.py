@@ -64,7 +64,7 @@ def plot(x, y, b):
     plt.scatter(x, y, color="m", marker="o", s=30)
 
     # predicted response vector
-    y_pred = b[0] + b[1] * x
+    y_pred = b[1] + b[0] * x
 
     # plotting the regression line
     plt.plot(x, y_pred, color="g")
@@ -78,8 +78,11 @@ def plot(x, y, b):
 
 
 def main():
-    x = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    y = np.array([1, 3, 2, 5, 7, 8, 8, 9, 10, 12])
+    # x = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    # y = np.array([1, 3, 2, 5, 7, 8, 8, 9, 10, 12])
+
+    x = np.array([1, 2, 3, 4, 5, 6, 7])
+    y = np.array([0.5, 2.5, 2.0, 4.0, 3.5, 6.0, 5.5])
 
     b = linear_regression(x, y)
     print ' b1: {}  b2: {} r2: {}'.format(b[0], b[1], b[2])

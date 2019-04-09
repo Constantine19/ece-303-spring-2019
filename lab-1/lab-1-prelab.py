@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def linear_regression(x, y, force_origin=False):
+def linear_regression(x, y, force_origin):
     """
     Performs linear regression given the x-data and y-data
 
@@ -43,6 +43,8 @@ def linear_regression(x, y, force_origin=False):
     ss_t = 0
     ss_r = 0
     for i in range(n):
+        if force_origin:
+            b0 = 0
         y_pred = b0 + b1 * x[i]
         ss_t += (y[i] - mean_y) ** 2
         ss_r += (y[i] - y_pred) ** 2
@@ -61,31 +63,32 @@ def plot(x, y, b):
     """
 
     # plotting the actual points as scatter plot
-    plt.scatter(x, y, color="m", marker="o", s=30)
+    plt.scatter(x, y, color="m", marker="o", s=30, label="Data Points")
 
     # predicted response vector
     y_pred = b[1] + b[0] * x
 
     # plotting the regression line
-    plt.plot(x, y_pred, color="g")
+    plt.plot(x, y_pred, color="g", label="Linear Regression Line")
+    plt.legend(loc=2)
 
     # putting labels
-    plt.xlabel('x')
-    plt.ylabel('y')
+    plt.xlabel('X', fontsize=20)
+    plt.ylabel('Y', fontsize=20)
+
+    plt.grid(True)
 
     # function to show plot
     plt.show()
 
 
 def main():
-    # x = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    # y = np.array([1, 3, 2, 5, 7, 8, 8, 9, 10, 12])
+    x = np.array([0, 0.3, 1, 1.7, 2.1, 2.5, 2.9, 3.5, 3.9, 0, 4.3, 5.0])
+    y = np.array([0.2, 0.5, 1.2, 1.0, 2.5, 2.6, 3.0, 2.9, 3.4, 0, 3.7, 4.0])
 
-    x = np.array([1, 2, 3, 4, 5, 6, 7])
-    y = np.array([0.5, 2.5, 2.0, 4.0, 3.5, 6.0, 5.5])
+    b = linear_regression(x, y, force_origin=True)
 
-    b = linear_regression(x, y)
-    print ' b1: {}  b2: {} r2: {}'.format(b[0], b[1], b[2])
+    print ' b1: {} b2: {} r2: {}'.format(b[0], b[1], b[2])
     plot(x, y, b)
 
 
